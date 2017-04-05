@@ -1,0 +1,36 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+i want to send a http get request which is not a problem. But the problem is i want to disply the data from the server page. Does it has to be a JSON page to display the data from remote server ? or any sort of data can be displayed ? if yes , then how Thank you
+
+<div class="form" ng-app="myApp" ng-controller="myCtrl">
+  <p>Enter URL : <input type="text" ng-model="url" /></p>
+
+  <p><input type="submit" value="CHECK" ng-click="callAPI()" /> </p> <!-- 1 -->
+  <p>
+    <ul ng-repeat="post in posts">
+        <li>{{post}}</li>
+
+</ul>
+  </p>
+
+  <div ng-bind="result"></div>  <!--  5 -->
+</div>
+
+
+    <script>
+            var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+
+                        $scope.callAPI = function() {             // 2
+                        //console.log($scope.url);                //3
+                            $http.get($scope.url)
+                            .success(function(response) {
+                             $scope.posts = response.data;       //4
+                             alert(response);
+                                });
+                             };
+
+                        });
+
+    </script>
+</body>
+</html>
