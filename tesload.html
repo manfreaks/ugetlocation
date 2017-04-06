@@ -1,0 +1,26 @@
+ <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+      <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+            
+            $("#driver").click(function(event){
+               $.getJSON('http://mybookhere.com/maprahmat/loadkota.php', function(jd) {
+                $.each(jd, function(i, item) {
+                   //alert(item.KoordinatWisata);
+                   alert('<p> Nama Wisata: ' + item.NamaWisata + '</p>');
+                   //$('#stage').append('<p>Koordinat : ' + item.KoordinatWisata+ '</p>');
+                    });
+               
+                  
+                  /* 
+                  $('#stage').html('<p> Name: ' + jd.name + '</p>');
+                  $('#stage').append('<p>Age : ' + jd.age+ '</p>');
+                  $('#stage').append('<p> Sex: ' + jd.sex+ '</p>');
+                  */
+               });
+            });
+            
+         });
+      </script>
+       <input type = "button" id = "driver" value = "Load Data" />
+        
